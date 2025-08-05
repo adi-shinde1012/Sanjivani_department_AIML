@@ -1,1 +1,2 @@
-link- https://sanjivani-department-aiml.onrender.com
+- link- https://sanjivani-department-aiml.onrender.com
+- link2- https://sanjivani-department-aiml.onrender.com/teacherlogin
