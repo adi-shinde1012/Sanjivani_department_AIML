@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Parent Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+:root {
+  --primary-color: #A30E10;
+  --accent-color: #FF6600;
+  --font-family: 'Poppins', sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  background: url('https://www.sanjivani.edu.in/images/slider_images/banner%2002.webp?1753263672037') no-repeat center/cover;
+  background-attachment: fixed;
+  min-height: 100vh;
+  color: #333;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+  color: white;
+  padding: 20px 40px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.logo {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: 500;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+.navbar a:hover {
+  color: #FFE0B3;
+}
+
+/* Login Container */
+.container {
+  background: rgba(255, 255, 255, 0.97);
+  max-width: 500px;
+  margin: 60px auto;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: var(--primary-color);
+  font-size: 2.2rem;
+}
+
+input[type="email"], input[type="password"] {
+  width: 100%;
+  margin: 12px 0;
+  padding: 15px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  background: #f9f9f9;
+}
+
+input:focus {
+  border-color: var(--accent-color);
+  outline: none;
+}
+
+button {
+  width: 100%;
+  margin-top: 20px;
+  padding: 15px;
+  background: var(--primary-color);
+  color: white;
+  font-size: 17px;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: var(--accent-color);
+  transform: scale(1.03);
+}
+
+.signup-link {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.signup-link a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.signup-link a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .header {
+    flex-direction: column;
+    text-align: center;
+  }
+  .navbar {
+    margin-top: 10px;
+  }
+  .container {
+    margin: 30px;
+    padding: 30px;
+  }
+}
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <div class="logo">AIML Department</div>
+  <nav class="navbar">
+    <a href="#">Home</a>
+    <a href="#">About Us</a>
+    <a href="#">Events</a>
+    <a href="#">Contact</a>
+  </nav>
+</header>
+
+<div class="container">
+  <h1>Parent Login</h1>
+  <form id="parentLoginForm">
+    <input type="email" id="email" placeholder="Email" required>
+    <input type="password" id="password" placeholder="Password" required>
+    <button type="submit">Login</button>
+  </form>
+  <div class="signup-link">
+    Don’t have an account? <a href="/parent-signup">Sign up here</a>
+  </div>
+</div>
+
+<script>
+  document.getElementById('parentLoginForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const email = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value.trim();
+
+    try {
+      const response = await fetch('/auth/parent/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+      });
+      const result = await response.json();
+
+      if (response.ok) {
+        window.location.href = "/parent-dashboard";
+      } else {
+        alert(result.error || "Invalid email or password.");
+      }
+    } catch (err) {
+      console.error("Login error:", err);
+      alert("Something went wrong. Please try again.");
+    }
+  });
+</script>
+
+<script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
+<script src="https://files.bpcontent.cloud/2025/07/19/10/20250719102300-QICJ22WH.js" defer></script> 
+</body>
+</html>

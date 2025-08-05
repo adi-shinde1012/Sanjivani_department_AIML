@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Parent Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+:root {
+  --primary-color: #0077b6;
+  --accent-color: #00b4d8;
+  --background-light: #f0f8ff;
+  --font-family: 'Poppins', sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  background: url('https://www.sanjivani.edu.in/images/slider_images/banner%2002.webp?1753263672037') no-repeat center/cover;
+  background-attachment: fixed;
+  color: white;
+  min-height: 100vh;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to right, #A30E10, #FF6600);
+  color: white;
+  padding: 15px 40px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: 500;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+.navbar a:hover {
+  color: #FFE0B3;
+}
+
+.container {
+  background: rgba(255, 255, 255, 0.95);
+  max-width: 850px;
+  margin: 30px auto;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  color: #333;
+}
+
+h1 {
+  text-align: center;
+  color: var(--primary-color);
+}
+
+select, input {
+  width: 100%;
+  margin-top: 10px;
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.exam-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.exam-buttons button {
+  flex: 1 1 auto;
+  padding: 12px 20px;
+  font-size: 1rem;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s, background-color 0.3s;
+  min-width: 100px;
+  max-width: 150px;
+}
+
+.exam-buttons button:hover {
+  background-color: var(--accent-color);
+  transform: scale(1.05);
+}
+
+.marks-display {
+  margin-top: 20px;
+}
+
+.gallery {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.gallery h2 {
+  color: var(--primary-color);
+  margin-bottom: 20px;
+}
+
+.gallery-images {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+.gallery-images img {
+  width: 250px;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  transition: transform 0.3s;
+}
+
+.gallery-images img:hover {
+  transform: scale(1.05);
+}
+
+.error {
+  color: red;
+  font-weight: bold;
+  margin-top: 10px;
+  text-align: center;
+}
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <div class="logo">AIML Department</div>
+  <nav class="navbar">
+    <a href="#">Home</a>
+    <a href="#">About Us</a>
+    <a href="#">Events</a>
+    <a href="#">Contact</a>
+  </nav>
+</header>
+
+<div class="container">
+  <h1>Welcome, Parent!</h1>
+
+  <div class="options">
+    <input type="text" id="studentId" placeholder="Enter Student ID" />
+
+    <select id="year">
+      <option value="">Select Year</option>
+      <option value="1">1st Year</option>
+      <option value="2">2nd Year</option>
+      <option value="3">3rd Year</option>
+      <option value="4">4th Year</option>
+    </select>
+
+    <select id="division">
+      <option value="">Select Division</option>
+      <option value="A">A</option>
+      <option value="B">B</option>
+    </select>
+
+    <select id="semester">
+      <option value="">Select Semester</option>
+      <option value="1">Sem 1</option>
+      <option value="2">Sem 2</option>
+      <option value="3">Sem 3</option>
+      <option value="4">Sem 4</option>
+      <option value="5">Sem 5</option>
+      <option value="6">Sem 6</option>
+      <option value="7">Sem 7</option>
+      <option value="8">Sem 8</option>
+    </select>
+
+    <div class="exam-buttons">
+      <button onclick="fetchExamMarks('CIA1')">CIA1</button>
+      <button onclick="fetchExamMarks('CIA2')">CIA2</button>
+      <button onclick="fetchExamMarks('END-SEM')">END-SEM</button>
+    </div>
+
+    <div class="marks-display" id="marksDisplay"></div>
+  </div>
+
+  <div class="gallery">
+    <h2>Our Department</h2>
+    <div class="gallery-images">
+      <img src="https://www.sanjivani.edu.in/images/infrastructure/labs%201.webp" alt="Lab Image">
+      <img src="https://www.sanjivani.edu.in/images/slider_images/banner%2002.webp?1753263672037" alt="University Image">
+      <img src="https://www.sanjivani.edu.in/images/infrastructure/ls2.jpg" alt="Students">
+      <img src="https://www.sanjivani.edu.in/images/infrastructure/classrooms%201.webp" alt="Classroom">
+    </div>
+  </div>
+</div>
+
+<script>
+async function fetchExamMarks(examType) {
+  const studentId = document.getElementById("studentId").value.trim();
+  const year = document.getElementById("year").value;
+  const semester = document.getElementById("semester").value;
+  const division = document.getElementById("division").value;
+  const marksDisplay = document.getElementById("marksDisplay");
+
+  if (!studentId || !year || !semester || !division) {
+    marksDisplay.innerHTML = "<div class='error'> Please fill all fields: Student ID, Year, Semester, and Division.</div>";
+    return;
+  }
+
+  try {
+    // ✅ This is the updated fetch URL with examType included
+    const res = await fetch(`/marks/${studentId}/${examType}?year=${year}&semester=${semester}&division=${division}`);
+    
+    if (!res.ok) {
+      marksDisplay.innerHTML = "<div class='error'> Student not found or server error.</div>";
+      return;
+    }
+
+    const marks = await res.json();
+
+    if (!Array.isArray(marks) || marks.length === 0) {
+      marksDisplay.innerHTML = `<div class='error'> No marks found for ${examType}.</div>`;
+      return;
+    }
+
+    let table = `<h3>${examType} Marks</h3><table>
+      <thead>
+        <tr>
+          <th>Subject</th>
+          <th>Marks</th>
+        </tr>
+      </thead>
+      <tbody>`;
+
+    marks.forEach(mark => {
+      table += `<tr><td>${mark.subject_name}</td><td>${mark.marks}</td></tr>`;
+    });
+
+    table += `</tbody></table>`;
+    marksDisplay.innerHTML = table;
+
+  } catch (error) {
+    console.error("Fetch error:", error);
+    marksDisplay.innerHTML = "<div class='error'> Error fetching marks. Try again later.</div>";
+  }
+}
+</script>
+
+<!-- Botpress Chatbot -->
+<script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
+<script src="https://files.bpcontent.cloud/2025/07/19/10/20250719102300-QICJ22WH.js" defer></script>
+
+</body>
+</html>

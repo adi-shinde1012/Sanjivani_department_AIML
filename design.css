@@ -1,0 +1,63 @@
+:root {
+  --primary-color: #A30E10;
+  --accent-color: #FF6600;
+  --light-grey: #f9f9f9;
+  --text-primary: #2f3e46;
+  --btn-radius: 10px;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #fff;
+  color: var(--text-primary);
+}
+
+h1, h2 {
+  color: var(--primary-color);
+}
+
+a, button {
+  font-family: inherit;
+  font-weight: 600;
+}
+
+button, .options a {
+  background-color: var(--primary-color);
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: var(--btn-radius);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover, .options a:hover {
+  background-color: var(--accent-color);
+  transform: translateY(-2px);
+}
+
+.upload-form, .options, .container {
+  background-color: #fff;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  border-radius: 12px;
+}
+
+input[type="file"],
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  border: 1px solid #ccc;
+  border-radius: var(--btn-radius);
+  padding: 12px;
+  width: 100%;
+  background-color: var(--light-grey);
+}
+
+.note, .signup-link {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+table th {
+  background-color: #ff6600;
+  color: #fff;
+}
