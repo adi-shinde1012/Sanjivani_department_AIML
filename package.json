@@ -6,7 +6,27 @@
     "express": "^5.1.0",
     "multer": "^2.0.1",
     "mysql2": "^3.14.1",
+    "nodemon": "^3.1.10",
     "path": "^0.12.7",
     "xlsx": "^0.18.5"
-  }
+  },
+  "name": "colleg-mark-system",
+  "version": "1.0.0",
+  "main": "authRoutes.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adi-shinde1012/Sanjivani_department_AIML.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adi-shinde1012/Sanjivani_department_AIML/issues"
+  },
+  "homepage": "https://github.com/adi-shinde1012/Sanjivani_department_AIML#readme",
+  "description": ""
 }
