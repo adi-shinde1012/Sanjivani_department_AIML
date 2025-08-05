@@ -20,9 +20,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // Serve HTML pages
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "uploadForm.html"));
-});
+// app.get("/", (req, res) => {
+//   res.sendFile(path.join(__dirname, "uploadForm.html"));
+// });
 
 app.get("/teacher-signup", (req, res) => {
   res.sendFile(path.join(__dirname, "teacherSignup.html"));
